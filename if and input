@@ -1,0 +1,44 @@
+if 语句的几个trick:
+if判断条件简写，比如写：
+
+if x:
+    print('True')
+else:
+    print('False')
+只要x是非零数值、非空字符串、非空list等，就判断为True，否则为False。
+(当x是0,None,[],(),{}，print是False) 注意： 是None 不是none. Python是大小写敏感的。
+type(None)
+Out[52]: NoneType
+
+input的返回默认都是str类型
+因为input()返回的数据类型是str，str不能直接和整数比较，必须先把str转换成整数。Python提供了int()函数来完成这件事情：
+一个程序，出生在00后还是00前。
+s = input('birth: ')
+birth = int(s)
+if birth < 2000:
+    print('00前')
+else:
+    print('00后')
+这里如果input写的是'abc'，int转不了，会报错跳出
+
+一个测试BMI的小程序：
+def BMI(height,weight):
+    bmi0 = weight/(height**2)
+    bmi=float(bmi0)
+    if bmi<18.5:
+        return '过轻'
+        print ('过轻')
+    elif 18.5<bmi<25 or bmi==18.5:
+        return '正常'
+        print ('正常')
+    elif 25<bmi<28 or bmi==25:
+        return '过重'
+        print('过重')
+    elif 28<bmi<32 or bmi==28:
+        return '肥胖'
+        print('肥胖')
+    else:
+        return '严重肥胖'
+        print('严重肥胖')
+BMI(1.65,55)
+out: '正常'
