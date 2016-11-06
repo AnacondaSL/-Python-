@@ -1,0 +1,73 @@
+list [] 是可变的
+tuple() 是不可变的，这个不可变指的是 指向不变。 Thus, tuple的一个元素是list， 修改list里面的元素是可以的。
+explaination through example:
+classmate= ['Adam','Jack','Tommy']
+classmate.append('wason')    # 用.append() 可以添加元素进入list
+in[30] :classmate
+Out[30]: ['Adam', 'Jack', 'Tommy', 'wason']
+
+在list指定位置插入元素：
+classmate.insert(1,'Lucy') # 在1号位置 插入'Lucy'
+in[32] :classmate
+Out[32]: ['Adam', 'Lucy', 'Jack', 'Tommy', 'wason']
+
+删除list某个元素：
+classmate.pop(3)
+Out[33]: 'Tommy'
+in[34] :classmate
+Out[34]: ['Adam', 'Lucy', 'Jack', 'wason']
+删除list最末元素：
+classmate.pop()
+Out[35]: 'wason'
+in[36] :classmate
+Out[36]: ['Adam', 'Lucy', 'Jack']
+
+list 可变 所以可以直接给list某个元素赋值：
+classmate
+Out[36]: ['Adam', 'Lucy', 'Jack']
+classmate[1]='apple'
+in[38] :classmate
+Out[38]: ['Adam', 'apple', 'Jack']
+
+里面的元素的数据类型也可以不同且元素可以是list:
+l1=['a',123,[2,4,6,8]]
+in[41] :len(l1)
+Out[41]: 3
+实际这里l1可以看做一个二维数组。
+分开写更好理解：
+l0=[2,4,6,8]
+l1=['a',123,l0]
+所以要读取4 ，就是l0[1]或者l1=[2][1]
+
+l2=[] # 空list
+
+tuple
+tuple和list非常类似，但是tuple一旦初始化就不能修改
+t=()
+#空tuple
+type(t)
+Out[46]: tuple
+
+定义一个只有1个元素的tuple,要在元素后加逗号, 否则会被识别为一个元素（int, float, boolen或者str）而不是tuple
+eg:
+tuple1=(1)
+tuple2=(1,)
+
+in[48] :type(tuple1)
+Out[48]: int
+in[49] :type(tuple2)
+Out[49]: tuple
+
+一个例子，看似可变的tuple 实际只是改变了元素list里面的元素：
+>>> t = ('a', 'b', ['A', 'B'])
+>>> t[2][0] = 'X'
+>>> t[2][1] = 'Y'
+>>> t
+('a', 'b', ['X', 'Y'])
+因为tuples实际三个元素 [0]指向'a' [1]指向'b' [2]指向['A','B']
+所以这里赋值t[2][0] 实际是改变了list['A','B']里的'A'元素，tuple[2]仍然指向一个这个包含2个元素的list
+
+因此： 要得到一个真正不可变的tuple，里面的元素一定要是都不可变的！
+为了代码安全性，能被被写成tuple的代码，都应该写成tuple而不是list!
+
+
